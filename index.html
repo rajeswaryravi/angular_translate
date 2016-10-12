@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My ToDo Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.4.js"></script>
+  <script src="node_modules\angular-translate\dist/angular-translate.min.js"></script>
+ <script src="node_modules\angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="app/app.js"></script>
+</head>
+<body ng-app="myApp">
+
+<div class="container-fluid" ng-controller="myController"> <!-- container-fluid starts -->
+<div class="row"> <!-- entire row starts -->
+<div class="col-xs-1"></div>
+<div class="col-xs-10">
+<header> <!-- header starts -->
+     <div class="head">
+     <h1 translate="heading"></h1></div>
+     <label id="change" translate="change"></label>
+     <select ng-model="change_lang" ng-init="change_lang='english'"  ng-change="update_lang()">
+       <option value="english" selected translate="english"></option>
+       <option value="spanish" translate="spanish"></option>
+    </select>
+     <div class="add_class"><a href="#" ng-click="add()" translate="add"></a></div> 
+ </header> <!-- header ends -->
+ <div class="clear"></div>
+ <div class="border_bottom"></div>
+  <table class="table"> <!-- inserting into table -->
+      <tr>
+        <th>#</th>
+        <th translate="taskid"></th>
+        <th translate="taskname"></th>
+        <th translate="completed"></th>
+        <th translate="removetask"></th>
+      </tr>
+      <tr ng-repeat="x in table_array" ng-class="{sel:select}">
+        <td>{{$index+1}}</td>
+        <td>{{ x.taskid}}</td>
+        <td>{{ x.taskname}}</td>
+        <td><input type="checkbox" ng-model="select"></td>
+        <td><a href="#" ng-click="remove($index)" translate="remove"></a></td>
+      </tr>
+  </table>
+  </div>
+  <div class="col-xs-1"></div>
+  </div> <!-- entire row ends -->
+</div> <!-- container fluid ends -->
+</body>
+</html>
